@@ -16,8 +16,11 @@ export const Clients = () => {
     { name: "Órgão Público", logo: clientGovernment },
   ];
 
+  // Duplicar array para criar efeito infinito
+  const duplicatedClients = [...clients, ...clients];
+
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-muted/30 overflow-hidden">
       <div className="container px-4 mx-auto">
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
@@ -28,22 +31,24 @@ export const Clients = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 max-w-6xl mx-auto">
-          {clients.map((client, index) => (
-            <Card
-              key={index}
-              className="p-6 flex items-center justify-center bg-background hover:-translate-y-1 transition-all duration-300 group"
-              style={{ boxShadow: "var(--shadow-card)" }}
-            >
-              <div className="relative w-full h-20 flex items-center justify-center">
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100"
-                />
-              </div>
-            </Card>
-          ))}
+        <div className="relative">
+          <div className="flex gap-8 animate-scroll-left">
+            {duplicatedClients.map((client, index) => (
+              <Card
+                key={index}
+                className="p-6 flex items-center justify-center bg-background hover:-translate-y-1 transition-all duration-300 group flex-shrink-0 w-48"
+                style={{ boxShadow: "var(--shadow-card)" }}
+              >
+                <div className="relative w-full h-20 flex items-center justify-center">
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100"
+                  />
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>

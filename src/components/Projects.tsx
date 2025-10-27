@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { X } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import projectConcrete from "@/assets/project-concrete.jpg";
 import projectQuality from "@/assets/project-quality.jpg";
 import projectBim from "@/assets/project-bim.jpg";
@@ -100,27 +100,29 @@ export const Projects = () => {
       </div>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-foreground pr-8">
               {selectedProject?.title}
             </DialogTitle>
           </DialogHeader>
-          <div className="grid gap-4 mt-4 md:grid-cols-2">
-            {selectedProject?.gallery.map((image, index) => (
-              <div
-                key={index}
-                className="relative h-64 overflow-hidden rounded-lg"
-                style={{ boxShadow: "var(--shadow-card)" }}
-              >
-                <img
-                  src={image}
-                  alt={`${selectedProject.title} - ${index + 1}`}
-                  className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            ))}
-          </div>
+          <Carousel className="w-full mt-4">
+            <CarouselContent>
+              {selectedProject?.gallery.map((image, index) => (
+                <CarouselItem key={index}>
+                  <div className="relative h-96 overflow-hidden rounded-lg" style={{ boxShadow: "var(--shadow-card)" }}>
+                    <img
+                      src={image}
+                      alt={`${selectedProject.title} - ${index + 1}`}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4" />
+            <CarouselNext className="right-4" />
+          </Carousel>
         </DialogContent>
       </Dialog>
     </section>

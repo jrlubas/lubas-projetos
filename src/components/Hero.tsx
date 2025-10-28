@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-engineering.jpg";
+import lubasLogo from "@/assets/lubas-logo.png";
 
 export const Hero = () => {
   return (
@@ -16,6 +17,15 @@ export const Hero = () => {
       
       <div className="container relative z-10 px-4 py-20 mx-auto">
         <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-8 flex justify-center animate-fade-in">
+            <div className="bg-background/95 backdrop-blur-sm p-4 rounded-lg shadow-lg">
+              <img 
+                src={lubasLogo} 
+                alt="LUBAS - Projetos e Consultoria" 
+                className="h-24 md:h-32 w-auto"
+              />
+            </div>
+          </div>
           <h1 className="mb-6 text-5xl font-bold tracking-tight text-primary-foreground md:text-6xl lg:text-7xl animate-fade-in">
             Engenharia Estrutural de Excelência
           </h1>

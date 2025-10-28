@@ -1,13 +1,16 @@
-import { Building2 } from "lucide-react";
+import lubasLogo from "@/assets/lubas-logo.png";
 
 export const Footer = () => {
   return (
     <footer className="py-12 bg-card border-t">
       <div className="container px-4 mx-auto">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <div className="flex items-center gap-2">
-            <Building2 className="w-8 h-8 text-accent" />
-            <span className="text-xl font-bold text-foreground">Engenharia Estrutural</span>
+          <div className="flex items-center">
+            <img 
+              src={lubasLogo} 
+              alt="LUBAS - Projetos e Consultoria" 
+              className="h-16 w-auto"
+            />
           </div>
           
           <div className="text-center md:text-right">

@@ -33,7 +33,12 @@ export const Hero = () => {
             Projetos de estruturas para obras prediais, industriais, portuárias e de infraestrutura urbana
           </p>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center animate-fade-in-delay-2">
-            <Button size="lg" variant="secondary" className="group">
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="group"
+              onClick={() => document.getElementById('projetos')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Nossos Projetos
               <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
             </Button>

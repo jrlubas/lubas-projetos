@@ -58,7 +58,7 @@ export const Projects = () => {
   };
 
   return (
-    <section className="py-20 bg-background">
+    <section id="projetos" className="py-20 bg-background">
       <div className="container px-4 mx-auto">
         <div className="max-w-3xl mx-auto mb-16 text-center">
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">

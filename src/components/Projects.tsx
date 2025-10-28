@@ -11,6 +11,7 @@ import projectInspection from "@/assets/project-inspection.jpg";
 
 interface ProjectCategory {
   title: string;
+  description: string;
   image: string;
   gallery: string[];
 }
@@ -22,31 +23,37 @@ export const Projects = () => {
   const projects: ProjectCategory[] = [
     {
       title: "Projetos de Estruturas de Concreto",
+      description: "Projetos estruturais completos em concreto armado e protendido para edificações residenciais, comerciais e industriais.",
       image: projectConcrete,
-      gallery: [projectConcrete, projectConcrete, projectConcrete], // Placeholder - adicionar mais imagens depois
+      gallery: [projectConcrete, projectConcrete, projectConcrete],
     },
     {
       title: "Controle de Qualidade de Projetos",
+      description: "Análise crítica e revisão de projetos estruturais, garantindo conformidade com normas técnicas e otimização de soluções.",
       image: projectQuality,
       gallery: [projectQuality, projectQuality, projectQuality],
     },
     {
       title: "Projetos em BIM",
+      description: "Desenvolvimento de projetos estruturais utilizando metodologia BIM, proporcionando maior eficiência e integração com outras disciplinas.",
       image: projectBim,
       gallery: [projectBim, projectBim, projectBim],
     },
     {
       title: "Projetos de Fundações e Obras de Terra",
+      description: "Dimensionamento de fundações profundas e rasas, contenções, muros de arrimo e soluções geotécnicas especiais.",
       image: projectFoundation,
       gallery: [projectFoundation, projectFoundation, projectFoundation],
     },
     {
       title: "Projetos de Estruturas Metálicas",
+      description: "Projetos estruturais em aço para galpões industriais, coberturas, mezaninos e estruturas de grande porte.",
       image: projectSteel,
       gallery: [projectSteel, projectSteel, projectSteel],
     },
     {
       title: "Laudos e Vistorias",
+      description: "Inspeções técnicas, laudos estruturais, avaliação de patologias e pareceres técnicos especializados.",
       image: projectInspection,
       gallery: [projectInspection, projectInspection, projectInspection],
     },
@@ -105,6 +112,9 @@ export const Projects = () => {
             <DialogTitle className="text-2xl font-bold text-foreground pr-8">
               {selectedProject?.title}
             </DialogTitle>
+            <p className="text-muted-foreground mt-2 pr-8">
+              {selectedProject?.description}
+            </p>
           </DialogHeader>
           <Carousel className="w-full mt-4">
             <CarouselContent>

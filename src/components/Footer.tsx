@@ -15,7 +15,7 @@ export const Footer = () => {
               © {new Date().getFullYear()} Todos os direitos reservados
             </p>
             <p className="text-sm text-muted-foreground">
-              Expertise em projetos estruturais desde 2003
+              Expertise em projetos estruturais desde 2013
             </p>
           </div>
         </div>

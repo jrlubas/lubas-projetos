@@ -29,8 +29,8 @@ export const Expertise = () => {
               className="flex items-start gap-4 p-6 transition-all rounded-lg bg-card hover:bg-accent/5"
               style={{ boxShadow: 'var(--shadow-card)' }}
             >
-              <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10">
-                <area.icon className="w-6 h-6 text-primary" />
+              <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-lg bg-accent/10">
+                <area.icon className="w-6 h-6 text-accent" />
               </div>
               <div>
                 <h3 className="mb-1 text-lg font-semibold text-foreground">{area.title}</h3>

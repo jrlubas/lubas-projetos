@@ -29,10 +29,10 @@ export const About = () => {
               className="flex flex-col items-center p-8 transition-all rounded-lg bg-card hover:shadow-lg"
               style={{ boxShadow: 'var(--shadow-card)' }}
             >
-              <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-primary/10">
-                <stat.icon className="w-8 h-8 text-primary" />
+              <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-accent/10">
+                <stat.icon className="w-8 h-8 text-accent" />
               </div>
-              <div className="mb-2 text-4xl font-bold text-primary">{stat.value}</div>
+              <div className="mb-2 text-4xl font-bold text-accent">{stat.value}</div>
               <div className="text-sm font-medium text-muted-foreground">{stat.label}</div>
             </div>
           ))}

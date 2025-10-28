@@ -6,7 +6,7 @@ export const Footer = () => {
       <div className="container px-4 mx-auto">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex items-center gap-2">
-            <Building2 className="w-8 h-8 text-primary" />
+            <Building2 className="w-8 h-8 text-accent" />
             <span className="text-xl font-bold text-foreground">Engenharia Estrutural</span>
           </div>
           

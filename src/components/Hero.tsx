@@ -22,7 +22,7 @@ export const Hero = () => {
               <img 
                 src={lubasLogo} 
                 alt="LUBAS - Projetos e Consultoria" 
-                className="h-24 md:h-32 w-auto"
+                className="h-36 md:h-48 w-auto"
               />
             </div>
           </div>

@@ -18,11 +18,11 @@ export const Hero = () => {
       <div className="container relative z-10 px-4 py-20 mx-auto">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8 flex justify-center animate-fade-in">
-            <div className="bg-background/95 backdrop-blur-sm p-4 rounded-lg shadow-lg">
+            <div className="bg-background/95 backdrop-blur-sm p-8 rounded-lg shadow-lg">
               <img 
                 src={lubasLogo} 
                 alt="LUBAS - Projetos e Consultoria" 
-                className="h-36 md:h-48 w-auto"
+                className="h-54 md:h-72 w-auto"
               />
             </div>
           </div>

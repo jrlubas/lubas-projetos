@@ -25,14 +25,6 @@ export const CTA = () => {
               <Mail className="w-5 h-5" />
               Enviar E-mail
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="gap-2 bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-            >
-              <Phone className="w-5 h-5" />
-              Ligar Agora
-            </Button>
           </div>
         </div>
       </div>

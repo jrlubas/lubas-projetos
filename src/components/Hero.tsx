@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/projects/louveira-1.jpg";
+import heroImage from "@/assets/hero-banner.jpg";
 
 const STATS = [
   { value: "2013", label: "Ano de fundação" },
@@ -15,30 +15,48 @@ export const Hero = () => {
       id="inicio"
       className="relative flex items-center pt-28 pb-32 lg:pt-36 lg:pb-40"
     >
-      <div
-        className="absolute inset-0 z-0 overflow-hidden"
-        style={{
-          backgroundImage: `linear-gradient(100deg, hsl(var(--primary) / 0.97) 0%, hsl(var(--primary) / 0.93) 38%, hsl(var(--primary) / 0.55) 100%), url(${heroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
+      <div className="absolute inset-0 z-0 overflow-hidden bg-primary">
+        <div className="container relative h-full px-4 mx-auto">
+          <img
+            src={heroImage}
+            alt=""
+            className="absolute right-0 top-0 h-full w-auto max-w-none origin-top-right scale-[1.1] translate-x-6"
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, black 40%, black 92%, transparent 100%)",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, black 40%, black 92%, transparent 100%)",
+            }}
+          />
+        </div>
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(100deg, hsl(var(--primary) / 0.97) 0%, hsl(var(--primary) / 0.93) 38%, hsl(var(--primary) / 0.55) 100%)`,
+          }}
+        />
         <div className="absolute inset-0 bg-diagonal-stripes opacity-40" />
       </div>
 
       <div className="container relative z-10 px-4 mx-auto">
         <div className="max-w-3xl">
           <span className="inline-block mb-5 px-4 py-1.5 border border-accent text-accent text-xs font-bold uppercase tracking-widest animate-fade-in">
-            Engenharia estrutural desde 2013
+            PROJETOS DE ENGENHARIA DESDE 2013
           </span>
           <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-5xl lg:text-6xl animate-fade-in">
-            Engenharia para mobilidade,{" "}
-            <span className="text-accent">infraestrutura</span> e edificações
+            Engenharia para edificações,{" "}
+            <span className="text-accent">infraestrutura</span> e mobilidade
           </h1>
           <p className="mb-10 max-w-xl text-lg text-primary-foreground/85 leading-relaxed animate-fade-in-delay">
-            Elaboramos e verificamos projetos de obras de arte especiais e correntes,
-            edificações e estações de metrô e de trens metropolitanos — de São Paulo/SP
-            a Campo Grande/MS.
+            <span className="block mb-3">
+              Elaboramos projetos de edificações, obras de arte especiais e correntes, estações de metrô e estações de trens metropolitanos
+            </span>
+            <span className="block mb-3">
+              Coordenação multidisciplinar, análise e verificação de projetos e compatibilização BIM
+            </span>
+            <span className="block">
+              Projetos multidisciplinares desenvolvidos em BIM LOD 400.
+            </span>
           </p>
           <div className="flex flex-col gap-4 sm:flex-row animate-fade-in-delay-2">
             <Button

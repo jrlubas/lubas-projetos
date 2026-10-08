@@ -43,7 +43,18 @@ export const CTA = () => {
             >
               <a href="tel:+551120368992">
                 <Phone className="w-5 h-5" />
-                (11) 2036-8992
+                São Paulo/SP: (11) 2036-8992
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="gap-2 bg-transparent border-primary-foreground/60 text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-none font-semibold"
+              asChild
+            >
+              <a href="tel:+556799999999">
+                <Phone className="w-5 h-5" />
+                Campo Grande/MS: (67) 9999-9999
               </a>
             </Button>
           </div>

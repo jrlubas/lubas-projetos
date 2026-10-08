@@ -73,15 +73,20 @@ export const Header = () => {
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
-            <a
-              href="tel:+551120368992"
-              className={`flex items-center gap-2 text-sm font-semibold transition-colors ${
+            <div
+              className={`flex flex-col gap-0.5 text-sm font-semibold transition-colors ${
                 scrolled ? "text-foreground" : "text-primary-foreground"
               }`}
             >
-              <Phone className="w-4 h-4 text-accent" />
-              (11) 2036-8992
-            </a>
+              <a href="tel:+551120368992" className="flex items-center gap-2 hover:text-accent">
+                <Phone className="w-4 h-4 text-accent" />
+                São Paulo/SP: (11) 2036-8992
+              </a>
+              <a href="tel:+556799999999" className="flex items-center gap-2 hover:text-accent">
+                <Phone className="w-4 h-4 text-accent" />
+                Campo Grande/MS: (67) 9999-9999
+              </a>
+            </div>
             <Button
               variant="default"
               className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-none font-semibold"

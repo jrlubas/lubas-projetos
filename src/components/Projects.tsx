@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
+import { PROJECTS_LIST } from "@/data/projectsList";
+import { ListChecks } from "lucide-react";
 
 import louveira1 from "@/assets/projects/louveira-1.jpg";
 import louveira2 from "@/assets/projects/louveira-2.jpg";
@@ -283,6 +285,7 @@ export const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isListOpen, setIsListOpen] = useState(false);
 
   const filteredProjects = activeCategory
     ? PROJECTS.filter((p) => p.category === activeCategory)
@@ -298,13 +301,21 @@ export const Projects = () => {
       <div className="container px-4 mx-auto">
         <div className="max-w-2xl mb-10">
           <span className="inline-block mb-3 text-sm font-bold uppercase tracking-widest text-accent">
-            Projetos
+            Experiência
           </span>
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            Principais projetos
-          </h2>
+          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2 mb-4">
+            <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+              Principais projetos
+            </h2>
+            <button
+              onClick={() => setIsListOpen(true)}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-primary transition-colors"
+            >
+              <ListChecks className="w-4 h-4" />
+              Ver lista completa de projetos
+            </button>
+          </div>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Alguns de nossos projetos
             Mais de 200 obras e serviços, de estações de metrô a pontes, edificações, cimentas, prédios e verificação técnica independente.
           </p>
         </div>
@@ -325,34 +336,44 @@ export const Projects = () => {
           ))}
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col gap-10">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group relative overflow-hidden cursor-pointer bg-card"
-              style={{ boxShadow: "var(--shadow-card)" }}
-              onClick={() => handleProjectClick(project)}
+              className="grid gap-6 lg:grid-cols-[280px_1fr] pb-10 border-b border-border last:border-b-0"
             >
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={project.cover}
-                  alt={project.title}
-                  loading="lazy"
-                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/10 to-transparent" />
-                <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground rounded-none font-semibold">
-                  {project.category}
-                </Badge>
-                <div className="absolute bottom-0 left-0 right-0 p-5 text-right">
-                  <h3 className="text-lg font-semibold text-primary-foreground leading-snug">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-primary-foreground/80">{project.location}</p>
-                  <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-primary-foreground/70">
-                    Ver projeto
+              <div
+                className="group cursor-pointer"
+                onClick={() => handleProjectClick(project)}
+              >
+                <h3 className="text-2xl font-bold text-foreground leading-snug group-hover:text-accent transition-colors">
+                  {project.title}
+                </h3>
+                {project.location.split("·").map((part, index) => (
+                  <p key={index} className="text-muted-foreground">
+                    {part.trim()}
                   </p>
-                </div>
+                ))}
+                <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-accent">
+                  Ver detalhes
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                {project.gallery.map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative aspect-video overflow-hidden cursor-pointer bg-card"
+                    onClick={() => handleProjectClick(project)}
+                  >
+                    <img
+                      src={image}
+                      alt={`${project.title} ${index + 1}`}
+                      loading="lazy"
+                      className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           ))}
@@ -417,6 +438,42 @@ export const Projects = () => {
               <span className="text-xs font-bold uppercase tracking-widest text-accent">Escopo</span>
               <p className="text-sm text-foreground leading-relaxed">{selectedProject?.scope}</p>
             </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isListOpen} onOpenChange={setIsListOpen}>
+        <DialogContent className="max-w-3xl max-h-[85vh] flex flex-col">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-foreground pr-8">
+              Lista completa de projetos
+            </DialogTitle>
+            <p className="text-sm text-muted-foreground">
+              110 obras e serviços, por setor e ano.
+            </p>
+          </DialogHeader>
+
+          <div className="overflow-y-auto pr-2 -mr-2 space-y-8">
+            {PROJECTS_LIST.map((section) => (
+              <div key={section.title}>
+                <h3 className="sticky top-0 bg-background py-2 text-xs font-bold uppercase tracking-widest text-accent border-b border-border">
+                  {section.title}
+                </h3>
+                <ul className="divide-y divide-border">
+                  {section.items.map((item, index) => (
+                    <li key={index} className="flex gap-4 py-3">
+                      <span className="flex-shrink-0 w-16 text-xs font-semibold text-muted-foreground pt-0.5">
+                        {item.year}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-sm font-semibold text-foreground leading-snug">{item.name}</p>
+                        <p className="text-sm text-muted-foreground leading-snug">{item.meta}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </DialogContent>
       </Dialog>

@@ -61,19 +61,11 @@ export const Leadership = () => {
           ))}
         </div>
 
-        <div className="mt-10 pt-10 border-t border-primary-foreground/15 grid gap-6 sm:grid-cols-2">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-accent">Associados</span>
-            <p className="text-sm text-primary-foreground/80 mt-1">
-              Eng. Everton Barbosa Batista · Eng. Násser Salomão · Eng. Wesley Gustavo
-            </p>
-          </div>
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-accent">Consultores</span>
-            <p className="text-sm text-primary-foreground/80 mt-1">
-              Eng. Jorge Takahashi · Eng. Dr. Valdir Pignatta
-            </p>
-          </div>
+        <div className="mt-10 pt-10 border-t border-primary-foreground/15">
+          <span className="text-xs font-bold uppercase tracking-widest text-accent">Associados</span>
+          <p className="text-sm text-primary-foreground/80 mt-1">
+            Eng. Everton Barbosa Batista · Eng. Násser Salomão · Eng. Wesley Gustavo
+          </p>
         </div>
       </div>
     </section>

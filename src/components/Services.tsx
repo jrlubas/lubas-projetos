@@ -75,8 +75,8 @@ export const Services = () => {
               <span className="block mb-6 text-4xl font-bold text-accent/30 group-hover:text-accent/50 transition-colors">
                 {service.number}
               </span>
-              <div className="flex items-center justify-center w-14 h-14 mb-5 bg-white shadow-sm">
-                <img src={service.icon} alt="" className="w-9 h-9 object-contain" />
+              <div className="flex items-center justify-center w-20 h-20 mb-5 bg-white shadow-sm">
+                <img src={service.icon} alt="" className="w-14 h-14 object-contain" />
               </div>
               <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary-foreground transition-colors">
                 {service.title}

@@ -86,7 +86,7 @@ export const Footer = () => {
           <p className="text-xs text-primary-foreground/60">
             © {new Date().getFullYear()} Lubas Projetos e Consultoria em Engenharia Ltda.
           </p>
-          <p className="text-xs text-primary-foreground/60">Concepção, cálculo e consultoria técnica</p>
+          <p className="text-xs text-primary-foreground/60">Concepção, projeto e consultoria técnica em engenharia.</p>
         </div>
       </div>
     </footer>

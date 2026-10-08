@@ -109,3 +109,36 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Diagonal section edges for a bold, industrial feel */
+  .clip-diagonal-b {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%);
+  }
+
+  .clip-diagonal-br-lg {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 7%);
+  }
+
+  .clip-diagonal-tl {
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .clip-notch-br {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+  }
+
+  .bg-diagonal-stripes {
+    background-image: repeating-linear-gradient(
+      135deg,
+      hsl(var(--accent) / 0.08) 0px,
+      hsl(var(--accent) / 0.08) 2px,
+      transparent 2px,
+      transparent 14px
+    );
+  }
+
+  .text-stroke-accent {
+    -webkit-text-stroke: 1px hsl(var(--accent));
+  }
+}

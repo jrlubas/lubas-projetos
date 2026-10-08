@@ -1,41 +1,49 @@
-import { Building2, Users, Award } from "lucide-react";
+import aboutImage from "@/assets/projects/boa-esperanca-1.jpg";
 
 export const About = () => {
-  const stats = [
-    { icon: Building2, value: "500+", label: "Projetos Entregues" },
-    { icon: Users, value: "20+", label: "Anos de Experiência" },
-    { icon: Award, value: "100%", label: "Excelência Técnica" },
-  ];
-
   return (
-    <section className="py-20 bg-background">
+    <section id="sobre" className="pt-28 pb-20 md:pt-36 md:pb-28 bg-background">
       <div className="container px-4 mx-auto">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            Sobre Nós
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Com atuação no desenvolvimento de projetos de estruturas de concreto, estruturas metálicas, 
-            alvenaria estrutural, fundações, contenções e "As Built", desenvolvemos ampla variedade de 
-            projetos funcionais, básicos e executivos. Nossa expertise abrange desde obras prediais e 
-            industriais até grandes projetos de infraestrutura como estações de metrô e obras de arte especial.
-          </p>
-        </div>
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <span className="inline-block mb-3 text-sm font-bold uppercase tracking-widest text-accent">
+              Sobre a Lubas
+            </span>
+            <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl leading-tight">
+              Engenharia estrutural, da concepção à verificação
+            </h2>
+            <p className="mb-5 text-muted-foreground leading-relaxed">
+              Fundada em 2013, com sede em São Paulo/SP e filial em Campo Grande/MS, a
+              Lubas Projetos e Consultoria em Engenharia elabora e verifica projetos de
+              obras de arte especiais e correntes, edificações e estações de metrô e de
+              trens metropolitanos.
+            </p>
+            <p className="mb-5 text-muted-foreground leading-relaxed">
+              Atuamos em estruturas de concreto armado, protendido e pré-moldado,
+              estruturas metálicas e alvenaria estrutural, fundações, contenções e obras
+              de terra — com projetos desenvolvidos em BIM e coordenação de equipes
+              multidisciplinares.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              A empresa é liderada pelos sócios{" "}
+              <a href="#lideranca" className="font-semibold text-primary hover:text-accent transition-colors">
+                Paulo Lubas e Edson Lubas
+              </a>
+              , ambos mestres em engenharia de estruturas pela Escola Politécnica da USP.
+            </p>
+          </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center p-8 transition-all rounded-lg bg-card hover:shadow-lg"
-              style={{ boxShadow: 'var(--shadow-card)' }}
-            >
-              <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-accent/10">
-                <stat.icon className="w-8 h-8 text-accent" />
-              </div>
-              <div className="mb-2 text-4xl font-bold text-accent">{stat.value}</div>
-              <div className="text-sm font-medium text-muted-foreground">{stat.label}</div>
+          <div className="relative">
+            <div className="absolute -inset-4 border-2 border-accent -z-10 hidden md:block" />
+            <div className="relative overflow-hidden" style={{ boxShadow: "var(--shadow-hover)" }}>
+              <img
+                src={aboutImage}
+                alt="Obra de infraestrutura projetada pela Lubas"
+                loading="lazy"
+                className="w-full h-[420px] object-cover"
+              />
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

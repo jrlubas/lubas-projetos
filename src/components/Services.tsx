@@ -1,39 +1,44 @@
-import { Boxes, Building2, Factory, Layers, FileCheck, SearchCheck } from "lucide-react";
+import iconBim from "@/assets/services/icon-bim.jpg";
+import iconConcreto from "@/assets/services/icon-concreto.jpg";
+import iconMetalicas from "@/assets/services/icon-metalicas.jpg";
+import iconFundacoes from "@/assets/services/icon-fundacoes.jpg";
+import iconAtp from "@/assets/services/icon-atp.jpg";
+import iconLaudos from "@/assets/services/icon-laudos.jpg";
 
 const SERVICES = [
   {
     number: "01",
-    icon: Boxes,
+    icon: iconBim,
     title: "Modelagem BIM",
     description: "Projetos em Revit até LOD 400, com coordenação e compatibilização multidisciplinar.",
   },
   {
     number: "02",
-    icon: Building2,
+    icon: iconConcreto,
     title: "Estruturas de concreto",
     description: "Concreto armado, protendido e pré-moldado para edificações, estações e obras de arte.",
   },
   {
     number: "03",
-    icon: Factory,
+    icon: iconMetalicas,
     title: "Estruturas metálicas",
-    description: "Coberturas, passarelas, galpões e estruturas mistas, do projeto básico ao de fabricação.",
+    description: "Coberturas, passarelas, obras de arte especial, galpões e estruturas mistas, do projeto básico ao de fabricação.",
   },
   {
     number: "04",
-    icon: Layers,
-    title: "Fundações e contenções",
-    description: "Fundações, contenções, muros de arrimo, obras de terra e interação solo-estrutura.",
+    icon: iconFundacoes,
+    title: "Fundações e obras de terra",
+    description: "Fundações, contenções, muros de arrimo, obras de terra, interação solo-estrutura e terraplenagem.",
   },
   {
     number: "05",
-    icon: FileCheck,
+    icon: iconAtp,
     title: "Avaliação Técnica de Projetos",
     description: "Verificação independente de projetos executivos para o Metrô-SP, consórcios e concessionárias.",
   },
   {
     number: "06",
-    icon: SearchCheck,
+    icon: iconLaudos,
     title: "Laudos e vistorias",
     description: "Inspeção, diagnóstico de manifestações patológicas e projetos de reforço e retrofit.",
   },
@@ -41,7 +46,7 @@ const SERVICES = [
 
 const TOOLS = [
   "SAP2000", "TQS", "STRAP", "Revit", "Advance Steel", "Metálicas 3D",
-  "Phase2", "Slide", "AutoCAD", "C# e VBA", "Claude (IA)",
+  "Phase2", "Slide", "AutoCAD", "C#", "Claude (IA)",
 ];
 
 export const Services = () => {
@@ -70,8 +75,8 @@ export const Services = () => {
               <span className="block mb-6 text-4xl font-bold text-accent/30 group-hover:text-accent/50 transition-colors">
                 {service.number}
               </span>
-              <div className="flex items-center justify-center w-14 h-14 mb-5 bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                <service.icon className="w-7 h-7 text-accent" />
+              <div className="flex items-center justify-center w-14 h-14 mb-5 bg-white shadow-sm">
+                <img src={service.icon} alt="" className="w-9 h-9 object-contain" />
               </div>
               <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary-foreground transition-colors">
                 {service.title}

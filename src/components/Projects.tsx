@@ -55,7 +55,6 @@ import laudos2 from "@/assets/projects/laudos-2.jpg";
 import laudos3 from "@/assets/projects/laudos-3.jpg";
 
 const CATEGORIES = [
-  "Todos",
   "Mobilidade sobre trilhos",
   "Pontes e viadutos",
   "Edificações",
@@ -67,7 +66,7 @@ type Category = (typeof CATEGORIES)[number];
 
 interface Project {
   id: string;
-  category: Exclude<Category, "Todos">;
+  category: Category;
   title: string;
   location: string;
   client: string;
@@ -281,14 +280,13 @@ const PROJECTS: Project[] = [
 ];
 
 export const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState<Category>("Todos");
+  const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const filteredProjects =
-    activeCategory === "Todos"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.category === activeCategory);
+  const filteredProjects = activeCategory
+    ? PROJECTS.filter((p) => p.category === activeCategory)
+    : PROJECTS;
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
@@ -306,8 +304,8 @@ export const Projects = () => {
             Principais projetos
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Mais de 110 obras e serviços, de estações de metrô a pontes, edificações e
-            verificação técnica independente.
+            Alguns de nossos projetos
+            Mais de 200 obras e serviços, de estações de metrô a pontes, edificações, cimentas, prédios e verificação técnica independente.
           </p>
         </div>
 
@@ -315,7 +313,7 @@ export const Projects = () => {
           {CATEGORIES.map((category) => (
             <button
               key={category}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => setActiveCategory((current) => (current === category ? null : category))}
               className={`px-4 py-2 text-sm font-semibold uppercase tracking-wide transition-colors border ${
                 activeCategory === category
                   ? "bg-primary text-primary-foreground border-primary"

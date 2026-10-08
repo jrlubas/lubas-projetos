@@ -346,11 +346,14 @@ export const Projects = () => {
                 <Badge className="absolute top-4 left-4 bg-accent text-accent-foreground rounded-none font-semibold">
                   {project.category}
                 </Badge>
-                <div className="absolute bottom-0 left-0 right-0 p-5">
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-right">
                   <h3 className="text-lg font-semibold text-primary-foreground leading-snug">
                     {project.title}
                   </h3>
                   <p className="text-sm text-primary-foreground/80">{project.location}</p>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-primary-foreground/70">
+                    Ver projeto
+                  </p>
                 </div>
               </div>
             </div>

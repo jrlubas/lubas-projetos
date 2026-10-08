@@ -4,9 +4,9 @@ import heroImage from "@/assets/hero-banner.jpg";
 
 const STATS = [
   { value: "2013", label: "Ano de fundação" },
-  { value: "4 mil", label: "Folhas verificadas no Metrô-SP" },
+  { value: "10 mil", label: "Folhas verificadas" },
   { value: "14 km", label: "Vigas protendidas verificadas" },
-  { value: "12", label: "Estações do Metrô BH em BIM" },
+  { value: "200", label: "Mais de duzentos projetos realizados" },
 ];
 
 export const Hero = () => {

@@ -1,5 +1,12 @@
 import { GraduationCap } from "lucide-react";
 
+const ASSOCIATES = [
+  "Eng. Everton Barbosa Batista",
+  "Eng. Násser Salomão",
+  "Eng. Wesley Gustavo",
+  "Eng. Matheus Barbosa",
+];
+
 const PARTNERS = [
   {
     name: "Paulo Henrique Lubas",
@@ -64,7 +71,12 @@ export const Leadership = () => {
         <div className="mt-10 pt-10 border-t border-primary-foreground/15">
           <span className="text-xs font-bold uppercase tracking-widest text-accent">Associados</span>
           <p className="text-sm text-primary-foreground/80 mt-1">
-            Eng. Everton Barbosa Batista · Eng. Násser Salomão · Eng. Wesley Gustavo
+            {ASSOCIATES.map((name, index) => (
+              <span key={name}>
+                {name}
+                {index !== ASSOCIATES.length - 1 && <span className="text-accent mx-3">·</span>}
+              </span>
+            ))}
           </p>
         </div>
       </div>

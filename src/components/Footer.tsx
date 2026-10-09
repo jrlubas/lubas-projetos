@@ -21,7 +21,7 @@ export const Footer = () => {
           <div>
             <img src={lubasLogo} alt="LUBAS - Projetos e Consultoria" className="h-[100px] w-auto mb-4 brightness-0 invert" />
             <p className="text-sm text-primary-foreground/70 leading-relaxed max-w-xs">
-              Engenharia estrutural para mobilidade, infraestrutura e edificações desde 2013.
+              Engenharia para edificações, infraestrutura e mobilidade desde 2013
             </p>
           </div>
 
@@ -54,8 +54,6 @@ export const Footer = () => {
                   Rua Filhas do Sagrado Coração, 51 – Sala 6, Vila Formosa
                   <br />
                   São Paulo/SP · CEP 03364-000
-                  <br />
-                  Filial: Campo Grande/MS
                 </span>
               </li>
               <li className="flex items-center gap-2">
@@ -63,6 +61,14 @@ export const Footer = () => {
                 <a href="tel:+551120368992" className="hover:text-accent transition-colors">
                   São Paulo/SP: +55 11 2036-8992
                 </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent" />
+                <span>
+                  Avenida América, 491, Vila Planalto
+                  <br />
+                  Campo Grande/MS · CEP 79009-060
+                </span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0 text-accent" />

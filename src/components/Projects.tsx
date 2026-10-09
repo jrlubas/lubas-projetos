@@ -29,7 +29,6 @@ import oaeGrupo11 from "@/assets/projects/oae-grupo11-1.jpg";
 import ponteVidaNova1 from "@/assets/projects/ponte-vidanova-1.jpg";
 import ponteVidaNova2 from "@/assets/projects/ponte-vidanova-2.jpg";
 import pacoBataguassu from "@/assets/projects/paco-bataguassu-render.jpg";
-import bataguassu1 from "@/assets/projects/bataguassu-1.jpg";
 import bataguassu2 from "@/assets/projects/bataguassu-2.jpg";
 import bataguassu3 from "@/assets/projects/bataguassu-3.jpg";
 import arenaSalvador1 from "@/assets/projects/arena-salvador-1.jpg";
@@ -71,6 +70,7 @@ interface Project {
   category: Category;
   title: string;
   location: string;
+  description?: string;
   client: string;
   architecture?: string;
   metricLabel?: string;
@@ -112,6 +112,8 @@ const PROJECTS: Project[] = [
     category: "Mobilidade sobre trilhos",
     title: "Acesso Estação da Luz – Sala São Paulo",
     location: "São Paulo/SP · 2019",
+    description:
+      "Ligação de pedestres entre a Estação da Luz e a Sala São Paulo, com passarela coberta e escadas de acesso, implantada junto ao conjunto histórico da Luz.",
     client: "CPTM / EBEI Engenharia",
     architecture: "Fernandes Arquitetos Associados",
     metricLabel: "ÁREA",
@@ -192,7 +194,7 @@ const PROJECTS: Project[] = [
     metricValue: "7.500 m²",
     scope: "Coordenação, estruturas, fundações e instalações elétricas, hidráulicas, fotovoltaicas e de lógica",
     cover: pacoBataguassu,
-    gallery: [pacoBataguassu, bataguassu1, bataguassu2, bataguassu3],
+    gallery: [pacoBataguassu, bataguassu2, bataguassu3],
   },
   {
     id: "arena-salvador",
@@ -270,14 +272,34 @@ const PROJECTS: Project[] = [
     gallery: [ragueb1, ragueb2, ragueb3, ragueb4],
   },
   {
-    id: "laudos",
+    id: "arsenal-de-guerra",
     category: "Laudos e vistorias",
-    title: "Inspeção e diagnóstico de estruturas existentes",
-    location: "Arsenal de Guerra (RJ) · Cinemark Jardins · Píer de Grãos (PA)",
-    client: "Ecorodovias · Cinemark · LPC Latina / Hidrovias",
-    scope: "Inspeção estrutural, retrofit e laudo técnico de inspeção estrutural em edificações e instalações portuárias.",
+    title: "Arsenal de Guerra",
+    location: "Rio de Janeiro/RJ",
+    client: "Ecorodovias",
+    scope: "Inspeção estrutural e laudo técnico de edificações e instalações portuárias",
     cover: laudos1,
-    gallery: [laudos1, laudos2, laudos3],
+    gallery: [laudos1],
+  },
+  {
+    id: "cinemark-jardins",
+    category: "Laudos e vistorias",
+    title: "Cinemark Jardins",
+    location: "Shopping Jardins",
+    client: "Cinemark",
+    scope: "Laudo técnico de inspeção estrutural das coberturas e arquibancadas",
+    cover: laudos2,
+    gallery: [laudos2],
+  },
+  {
+    id: "pier-de-graos",
+    category: "Laudos e vistorias",
+    title: "Dolfins do Píer de Grãos",
+    location: "Porto de Vila do Conde/PA · 2015",
+    client: "LPC Latina / Hidrovias",
+    scope: "Laudo de avaliação e projeto de restauração e reforço",
+    cover: laudos3,
+    gallery: [laudos3],
   },
 ];
 
@@ -312,11 +334,11 @@ export const Projects = () => {
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-primary transition-colors"
             >
               <ListChecks className="w-4 h-4" />
-              Ver lista completa de projetos
+              Ver lista
             </button>
           </div>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Mais de 200 obras e serviços, de estações de metrô a pontes, edificações, cimentas, prédios e verificação técnica independente.
+            Mais de 200 obras e serviços, de estações de metrô a pontes, edificações, galpões e pisos industriais, cinemas e verificação técnica independente.
           </p>
         </div>
 
@@ -337,46 +359,112 @@ export const Projects = () => {
         </div>
 
         <div className="flex flex-col gap-10">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="grid gap-6 lg:grid-cols-[280px_1fr] pb-10 border-b border-border last:border-b-0"
-            >
-              <div
-                className="group cursor-pointer"
-                onClick={() => handleProjectClick(project)}
-              >
-                <h3 className="text-2xl font-bold text-foreground leading-snug group-hover:text-accent transition-colors">
-                  {project.title}
-                </h3>
-                {project.location.split("·").map((part, index) => (
-                  <p key={index} className="text-muted-foreground">
-                    {part.trim()}
-                  </p>
-                ))}
-                <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-accent">
-                  Ver detalhes
-                </p>
-              </div>
+          {filteredProjects.map((project) => {
+            const index = PROJECTS.findIndex((p) => p.id === project.id) + 1;
+            const details: { label: string; value: string }[] = [
+              { label: "Cliente", value: project.client },
+              ...(project.architecture ? [{ label: "Arquitetura", value: project.architecture }] : []),
+              { label: "Escopo", value: project.scope },
+            ];
 
-              <div className="grid grid-cols-2 gap-2">
-                {project.gallery.map((image, index) => (
-                  <div
-                    key={index}
-                    className="relative aspect-video overflow-hidden cursor-pointer bg-card"
-                    onClick={() => handleProjectClick(project)}
-                  >
-                    <img
-                      src={image}
-                      alt={`${project.title} ${index + 1}`}
-                      loading="lazy"
-                      className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                ))}
+            return (
+              <div
+                key={project.id}
+                className="grid gap-6 lg:grid-cols-[320px_1fr] pb-10 border-b border-border last:border-b-0"
+              >
+                <div
+                  className="group cursor-pointer"
+                  onClick={() => handleProjectClick(project)}
+                >
+                  <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent">
+                    <span aria-hidden className="text-[0.6rem]">◆</span>
+                    {String(index).padStart(2, "0")} · {project.category}
+                  </span>
+
+                  <h3 className="mt-2 text-2xl font-bold text-foreground leading-snug group-hover:text-accent transition-colors">
+                    {project.title}
+                  </h3>
+                  {project.location.split("·").map((part, i) => (
+                    <p key={i} className="text-muted-foreground">
+                      {part.trim()}
+                    </p>
+                  ))}
+
+                  {project.description && (
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
+                  )}
+
+                  {project.metricLabel && (
+                    <div className="mt-4">
+                      <span className="text-xs font-bold uppercase tracking-widest text-accent">
+                        {project.metricLabel}
+                      </span>
+                      <p className="text-4xl font-bold text-foreground leading-tight">{project.metricValue}</p>
+                    </div>
+                  )}
+
+                  <dl className="mt-4 border-t border-border divide-y divide-border text-sm">
+                    {details.map(({ label, value }) => (
+                      <div key={label} className="flex gap-4 py-2.5">
+                        <dt className="w-24 flex-shrink-0 text-xs font-bold uppercase tracking-widest text-muted-foreground pt-0.5">
+                          {label}
+                        </dt>
+                        <dd className="text-foreground leading-relaxed">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+
+                <div className="min-h-[260px] sm:min-h-[320px] lg:min-h-[400px] max-h-[420px] sm:max-h-[480px] lg:max-h-[560px]">
+                  {(() => {
+                    const g = project.gallery;
+                    const tile = (image: string, i: number, style?: React.CSSProperties) => (
+                      <div
+                        key={i}
+                        className="relative w-full h-full overflow-hidden cursor-pointer bg-card"
+                        style={style}
+                        onClick={() => handleProjectClick(project)}
+                      >
+                        <img
+                          src={image}
+                          alt={`${project.title} ${i + 1}`}
+                          loading="lazy"
+                          className="block object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+                        />
+                      </div>
+                    );
+
+                    if (g.length === 1) {
+                      return <div className="h-full">{tile(g[0], 0)}</div>;
+                    }
+
+                    if (g.length === 2) {
+                      return (
+                        <div className="grid grid-cols-2 gap-2 h-full">
+                          {g.map((image, i) => tile(image, i))}
+                        </div>
+                      );
+                    }
+
+                    const stackCount = g.length - 1;
+                    return (
+                      <div
+                        className="grid grid-cols-2 gap-2 h-full"
+                        style={{ gridTemplateRows: `repeat(${stackCount}, 1fr)` }}
+                      >
+                        {tile(g[0], 0, { gridColumn: "1 / 2", gridRow: `1 / span ${stackCount}` })}
+                        {g.slice(1).map((image, i) =>
+                          tile(image, i + 1, { gridColumn: "2 / 3", gridRow: `${i + 1} / span 1` })
+                        )}
+                      </div>
+                    );
+                  })()}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -393,15 +481,15 @@ export const Projects = () => {
           </DialogHeader>
 
           <Carousel className="w-full mt-2">
-            <CarouselContent>
+            <CarouselContent className="items-center">
               {selectedProject?.gallery.map((image, index) => (
                 <CarouselItem key={index}>
-                  <div className="relative h-96 overflow-hidden" style={{ boxShadow: "var(--shadow-card)" }}>
+                  <div className="flex items-center justify-center">
                     <img
                       src={image}
                       alt={`${selectedProject.title} - ${index + 1}`}
                       loading="lazy"
-                      className="object-cover w-full h-full"
+                      className="max-h-[70vh] w-auto max-w-full object-contain"
                     />
                   </div>
                 </CarouselItem>

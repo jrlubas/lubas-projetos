@@ -61,8 +61,7 @@ export const Services = () => {
             O que fazemos
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Projetos básicos e executivos, verificação independente e consultoria
-            técnica em estruturas e geotecnia, para obras públicas e privadas.
+            Projetos básicos e executivos, verificação independente e consultoria técnica em engenharia, para obras públicas e privadas.
           </p>
         </div>
 
@@ -72,18 +71,24 @@ export const Services = () => {
               key={service.number}
               className="group relative bg-card p-8 transition-colors hover:bg-primary"
             >
-              <span className="block mb-6 text-4xl font-bold text-accent/30 group-hover:text-accent/50 transition-colors">
-                {service.number}
-              </span>
-              <div className="flex items-center justify-center w-20 h-20 mb-5 bg-white shadow-sm">
-                <img src={service.icon} alt="" className="w-14 h-14 object-contain" />
+              <div className="flex gap-4">
+                <div className="flex flex-col items-start flex-shrink-0">
+                  <span className="text-2xl font-bold text-accent/50 group-hover:text-accent/70 transition-colors">
+                    {service.number}
+                  </span>
+                  <div className="flex items-center justify-center w-20 h-20 mt-3 bg-white shadow-sm">
+                    <img src={service.icon} alt="" className="w-16 h-16 object-contain" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary-foreground transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80 transition-colors leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary-foreground transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80 transition-colors leading-relaxed">
-                {service.description}
-              </p>
             </div>
           ))}
         </div>

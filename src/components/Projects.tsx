@@ -13,6 +13,8 @@ import valinhos1 from "@/assets/projects/valinhos-1.jpg";
 import valinhos2 from "@/assets/projects/valinhos-2.jpg";
 import valinhos3 from "@/assets/projects/valinhos-3.jpg";
 import valinhos4 from "@/assets/projects/valinhos-4.jpg";
+import valinhos5 from "@/assets/projects/valinhos-5.jpg";
+import valinhos6 from "@/assets/projects/valinhos-6.jpg";
 import luz1 from "@/assets/projects/luz-1.jpg";
 import luz2 from "@/assets/projects/luz-2.jpg";
 import luz3 from "@/assets/projects/luz-3.jpg";
@@ -39,6 +41,9 @@ import vilaPinheiros2 from "@/assets/projects/vila-pinheiros-2.jpg";
 import vilaPinheiros3 from "@/assets/projects/vila-pinheiros-3.jpg";
 import outletPremium1 from "@/assets/projects/outlet-premium-1.jpg";
 import outletPremium2 from "@/assets/projects/outlet-premium-2.jpg";
+import cinemarkWestPlaza1 from "@/assets/projects/cinemark-west-plaza-1.jpg";
+import cinemarkWestPlaza2 from "@/assets/projects/cinemark-west-plaza-2.jpg";
+import cinemarkWestPlaza3 from "@/assets/projects/cinemark-west-plaza-3.jpg";
 import boaEsperanca1 from "@/assets/projects/boa-esperanca-1.jpg";
 import boaEsperanca2 from "@/assets/projects/boa-esperanca-2.jpg";
 import boaEsperanca3 from "@/assets/projects/boa-esperanca-3.jpg";
@@ -65,6 +70,15 @@ const CATEGORIES = [
 
 type Category = (typeof CATEGORIES)[number];
 
+type GalleryLayout =
+  | "single"
+  | "stack2"
+  | "grid4"
+  | "grid3x2"
+  | "feature-top2"
+  | "feature-top3"
+  | "feature-left";
+
 interface Project {
   id: string;
   category: Category;
@@ -78,6 +92,7 @@ interface Project {
   scope: string;
   cover: string;
   gallery: string[];
+  galleryLayout?: GalleryLayout;
 }
 
 const PROJECTS: Project[] = [
@@ -93,6 +108,7 @@ const PROJECTS: Project[] = [
     scope: "Fundações, contenções e obras de terra, terraplenagem, pré-moldados, metálicas e piso estrutural · BIM",
     cover: louveira1,
     gallery: [louveira1, louveira2, louveira3, louveira4],
+    galleryLayout: "grid4",
   },
   {
     id: "valinhos",
@@ -105,7 +121,8 @@ const PROJECTS: Project[] = [
     metricValue: "3.760 m²",
     scope: "Fundações, contenções e obras de terra, terraplenagem, estruturas de concreto e pré-moldadas, estruturas metálicas e piso estrutural · BIM",
     cover: valinhos1,
-    gallery: [valinhos1, valinhos2, valinhos3, valinhos4],
+    gallery: [valinhos2, valinhos1, valinhos5, valinhos6, valinhos3, valinhos4],
+    galleryLayout: "grid3x2",
   },
   {
     id: "luz",
@@ -121,6 +138,7 @@ const PROJECTS: Project[] = [
     scope: "Estruturas de concreto, estruturas metálicas e fundações",
     cover: luz1,
     gallery: [luz1, luz2, luz3],
+    galleryLayout: "feature-left",
   },
   {
     id: "eldorado",
@@ -134,6 +152,7 @@ const PROJECTS: Project[] = [
     scope: "Estruturas de concreto e metálicas, fundações e contenções",
     cover: eldorado1,
     gallery: [eldorado1, eldorado2, eldorado3],
+    galleryLayout: "feature-top2",
   },
   {
     id: "morro-grande",
@@ -146,6 +165,7 @@ const PROJECTS: Project[] = [
     scope: "Fundações, estruturas de concreto e estruturas pré-moldadas e metálicas, piso estrutural · BIM",
     cover: morroGrande1,
     gallery: [morroGrande1, morroGrande2, morroGrande3],
+    galleryLayout: "feature-top2",
   },
   {
     id: "tunel-paulista",
@@ -158,6 +178,7 @@ const PROJECTS: Project[] = [
     scope: "Estruturas, interação solo-estrutura e impermeabilização · BIM",
     cover: tunelPaulista1,
     gallery: [tunelPaulista1, tunelPaulista2, tunelPaulista3],
+    galleryLayout: "feature-left",
   },
   {
     id: "oae-grupo11",
@@ -182,6 +203,7 @@ const PROJECTS: Project[] = [
     scope: "Fundações, contenções, estruturas de concreto e protensão",
     cover: ponteVidaNova1,
     gallery: [ponteVidaNova1, ponteVidaNova2],
+    galleryLayout: "stack2",
   },
   {
     id: "bataguassu",
@@ -195,6 +217,7 @@ const PROJECTS: Project[] = [
     scope: "Coordenação, estruturas, fundações e instalações elétricas, hidráulicas, fotovoltaicas e de lógica",
     cover: pacoBataguassu,
     gallery: [pacoBataguassu, bataguassu2, bataguassu3],
+    galleryLayout: "feature-top2",
   },
   {
     id: "arena-salvador",
@@ -208,6 +231,7 @@ const PROJECTS: Project[] = [
     scope: "Fundações, estruturas de concreto, pré-moldadas e metálicas · BIM",
     cover: arenaSalvador1,
     gallery: [arenaSalvador1, arenaSalvador2, arenaSalvador3],
+    galleryLayout: "feature-top2",
   },
   {
     id: "vila-pinheiros",
@@ -221,6 +245,7 @@ const PROJECTS: Project[] = [
     scope: "Estruturas metálicas (coberturas e marquises) · BIM",
     cover: vilaPinheiros1,
     gallery: [vilaPinheiros1, vilaPinheiros2, vilaPinheiros3],
+    galleryLayout: "feature-top2",
   },
   {
     id: "outlet-premium",
@@ -234,6 +259,22 @@ const PROJECTS: Project[] = [
     scope: "Estruturas metálicas de cobertura",
     cover: outletPremium1,
     gallery: [outletPremium1, outletPremium2],
+    galleryLayout: "stack2",
+  },
+  {
+    id: "cinemark-west-plaza",
+    category: "Edificações",
+    title: "Cinemark Shopping West Plaza",
+    location: "São Paulo/SP · 2014",
+    description:
+      "Complexo de cinemas construído sobre a cobertura do shopping: estruturas metálicas, cobertura e fechamentos do novo volume, que abriga as salas e a circulação envidraçada.",
+    client: "Cinemark",
+    metricLabel: "ÁREA",
+    metricValue: "4.750 m²",
+    scope: "Estruturas metálicas, cobertura e fechamentos",
+    cover: cinemarkWestPlaza1,
+    gallery: [cinemarkWestPlaza1, cinemarkWestPlaza2, cinemarkWestPlaza3],
+    galleryLayout: "feature-top2",
   },
   {
     id: "boa-esperanca",
@@ -246,6 +287,7 @@ const PROJECTS: Project[] = [
     scope: "Fundações, estruturas de concreto e metálicas: desenhos e memórias de cálculo",
     cover: boaEsperanca1,
     gallery: [boaEsperanca1, boaEsperanca2, boaEsperanca3, boaEsperanca4],
+    galleryLayout: "feature-top3",
   },
   {
     id: "jacu-pessego",
@@ -258,6 +300,7 @@ const PROJECTS: Project[] = [
     scope: "Fundações, estruturas de concreto e embutidos: desenhos e memórias de cálculo",
     cover: jacuPessego1,
     gallery: [jacuPessego1, jacuPessego2, jacuPessego3, jacuPessego4],
+    galleryLayout: "feature-top3",
   },
   {
     id: "ragueb-chohfi",
@@ -270,6 +313,7 @@ const PROJECTS: Project[] = [
     scope: "Fundações, estruturas de concreto e metálicas: desenhos e memórias de cálculo",
     cover: ragueb1,
     gallery: [ragueb1, ragueb2, ragueb3, ragueb4],
+    galleryLayout: "feature-top3",
   },
   {
     id: "arsenal-de-guerra",
@@ -436,14 +480,52 @@ export const Projects = () => {
                       </div>
                     );
 
-                    if (g.length === 1) {
+                    const layout: GalleryLayout =
+                      project.galleryLayout ??
+                      (g.length === 1
+                        ? "single"
+                        : g.length === 2
+                        ? "stack2"
+                        : g.length === 4
+                        ? "grid4"
+                        : "feature-left");
+
+                    if (layout === "single") {
                       return <div className="h-full">{tile(g[0], 0)}</div>;
                     }
 
-                    if (g.length === 2) {
+                    if (layout === "stack2") {
                       return (
-                        <div className="grid grid-cols-2 gap-2 h-full">
+                        <div className="grid grid-rows-2 gap-2 h-full">
                           {g.map((image, i) => tile(image, i))}
+                        </div>
+                      );
+                    }
+
+                    if (layout === "grid4") {
+                      return (
+                        <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
+                          {g.map((image, i) => tile(image, i))}
+                        </div>
+                      );
+                    }
+
+                    if (layout === "grid3x2") {
+                      return (
+                        <div className="grid grid-cols-2 grid-rows-3 gap-2 h-full">
+                          {g.map((image, i) => tile(image, i))}
+                        </div>
+                      );
+                    }
+
+                    if (layout === "feature-top2" || layout === "feature-top3") {
+                      const cols = layout === "feature-top2" ? "grid-cols-2" : "grid-cols-3";
+                      return (
+                        <div className="grid h-full gap-2" style={{ gridTemplateRows: "2fr 1fr" }}>
+                          {tile(g[0], 0)}
+                          <div className={`grid ${cols} gap-2`}>
+                            {g.slice(1).map((image, i) => tile(image, i + 1))}
+                          </div>
                         </div>
                       );
                     }

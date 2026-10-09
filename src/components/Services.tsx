@@ -44,11 +44,6 @@ const SERVICES = [
   },
 ];
 
-const TOOLS = [
-  "SAP2000", "TQS", "STRAP", "Revit", "Advance Steel", "Metálicas 3D",
-  "Phase2", "Slide", "AutoCAD", "C#", "Claude (IA)",
-];
-
 export const Services = () => {
   return (
     <section id="servicos" className="py-20 md:py-28 bg-muted/30">
@@ -90,18 +85,6 @@ export const Services = () => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 justify-center text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground mr-2">
-            Ferramentas
-          </span>
-          {TOOLS.map((tool, index) => (
-            <span key={tool} className="text-sm text-foreground/80">
-              {tool}
-              {index !== TOOLS.length - 1 && <span className="text-accent ml-3">·</span>}
-            </span>
           ))}
         </div>
       </div>

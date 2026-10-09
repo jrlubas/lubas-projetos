@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Badge } from "@/components/ui/badge";
 import { PROJECTS_LIST } from "@/data/projectsList";
 import { ListChecks } from "lucide-react";
 
@@ -347,6 +346,74 @@ const PROJECTS: Project[] = [
   },
 ];
 
+// Tall photo on the left, the rest stacked on the right. The left photo's
+// pixel width is derived from the right column's actual measured height
+// (via ResizeObserver) times the photo's own natural aspect ratio, so it
+// always matches the right column exactly — top and bottom — without
+// cropping or distorting it, whatever photos or container width are in play.
+// (A pure CSS calc() can't do this: grid track sizing doesn't allow mixing
+// fr with px in the same expression, so a "fr + gap-px" formula silently
+// drops the px term and leaves the bottom short.)
+const FeatureLeftGallery = ({
+  images,
+  title,
+  onImageClick,
+}: {
+  images: string[];
+  title: string;
+  onImageClick: () => void;
+}) => {
+  const [leftRatio, setLeftRatio] = useState<number | null>(null);
+  const [rightHeight, setRightHeight] = useState<number | null>(null);
+  const rightColRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = rightColRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setRightHeight(entry.contentRect.height);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const leftWidth = leftRatio && rightHeight ? rightHeight * leftRatio : null;
+
+  return (
+    <div className="flex gap-2 items-start">
+      <div
+        className="overflow-hidden flex-shrink-0"
+        style={leftWidth ? { width: leftWidth } : { flex: 1 }}
+      >
+        <img
+          src={images[0]}
+          alt={`${title} 1`}
+          loading="lazy"
+          onClick={onImageClick}
+          onLoad={(e) => {
+            const t = e.currentTarget;
+            setLeftRatio(t.naturalWidth / t.naturalHeight);
+          }}
+          className="block w-full h-auto cursor-pointer transition-transform duration-500 hover:scale-105"
+        />
+      </div>
+      <div ref={rightColRef} className="flex flex-col gap-2 flex-1 min-w-0">
+        {images.slice(1).map((image, i) => (
+          <div key={i + 1} className="overflow-hidden">
+            <img
+              src={image}
+              alt={`${title} ${i + 2}`}
+              loading="lazy"
+              onClick={onImageClick}
+              className="block w-full h-auto cursor-pointer transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -461,22 +528,31 @@ export const Projects = () => {
                   </dl>
                 </div>
 
-                <div className="min-h-[260px] sm:min-h-[320px] lg:min-h-[400px] max-h-[420px] sm:max-h-[480px] lg:max-h-[560px]">
+                <div>
                   {(() => {
                     const g = project.gallery;
-                    const tile = (image: string, i: number, style?: React.CSSProperties) => (
-                      <div
-                        key={i}
-                        className="relative w-full h-full overflow-hidden cursor-pointer bg-card"
-                        style={style}
-                        onClick={() => handleProjectClick(project)}
-                      >
+
+                    // Width-governed image: fills the width of its cell, height follows
+                    // the photo's own aspect ratio (never cropped).
+                    const wImg = (image: string, i: number) => (
+                      <div key={i} className="overflow-hidden">
                         <img
                           src={image}
                           alt={`${project.title} ${i + 1}`}
                           loading="lazy"
-                          className="block object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+                          onClick={() => handleProjectClick(project)}
+                          className="block w-full h-auto cursor-pointer transition-transform duration-500 hover:scale-105"
                         />
+                      </div>
+                    );
+
+                    const row = (images: { image: string; i: number }[], key: number | string) => (
+                      <div className="flex gap-2" key={key}>
+                        {images.map(({ image, i }) => (
+                          <div className="flex-1 min-w-0" key={i}>
+                            {wImg(image, i)}
+                          </div>
+                        ))}
                       </div>
                     );
 
@@ -491,56 +567,64 @@ export const Projects = () => {
                         : "feature-left");
 
                     if (layout === "single") {
-                      return <div className="h-full">{tile(g[0], 0)}</div>;
+                      return wImg(g[0], 0);
                     }
 
                     if (layout === "stack2") {
                       return (
-                        <div className="grid grid-rows-2 gap-2 h-full">
-                          {g.map((image, i) => tile(image, i))}
+                        <div className="flex flex-col gap-2">
+                          {g.map((image, i) => wImg(image, i))}
                         </div>
                       );
                     }
 
                     if (layout === "grid4") {
                       return (
-                        <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
-                          {g.map((image, i) => tile(image, i))}
+                        <div className="flex flex-col gap-2">
+                          {row(
+                            g.slice(0, 2).map((image, i) => ({ image, i })),
+                            "r1"
+                          )}
+                          {row(
+                            g.slice(2, 4).map((image, i) => ({ image, i: i + 2 })),
+                            "r2"
+                          )}
                         </div>
                       );
                     }
 
                     if (layout === "grid3x2") {
                       return (
-                        <div className="grid grid-cols-2 grid-rows-3 gap-2 h-full">
-                          {g.map((image, i) => tile(image, i))}
+                        <div className="flex flex-col gap-2">
+                          {[0, 2, 4].map((start, ri) =>
+                            row(
+                              g.slice(start, start + 2).map((image, i) => ({ image, i: start + i })),
+                              ri
+                            )
+                          )}
                         </div>
                       );
                     }
 
                     if (layout === "feature-top2" || layout === "feature-top3") {
-                      const cols = layout === "feature-top2" ? "grid-cols-2" : "grid-cols-3";
                       return (
-                        <div className="grid h-full gap-2" style={{ gridTemplateRows: "2fr 1fr" }}>
-                          {tile(g[0], 0)}
-                          <div className={`grid ${cols} gap-2`}>
-                            {g.slice(1).map((image, i) => tile(image, i + 1))}
-                          </div>
+                        <div className="flex flex-col gap-2">
+                          {wImg(g[0], 0)}
+                          {row(
+                            g.slice(1).map((image, i) => ({ image, i: i + 1 })),
+                            "bottom"
+                          )}
                         </div>
                       );
                     }
 
-                    const stackCount = g.length - 1;
+                    // feature-left / default fallback
                     return (
-                      <div
-                        className="grid grid-cols-2 gap-2 h-full"
-                        style={{ gridTemplateRows: `repeat(${stackCount}, 1fr)` }}
-                      >
-                        {tile(g[0], 0, { gridColumn: "1 / 2", gridRow: `1 / span ${stackCount}` })}
-                        {g.slice(1).map((image, i) =>
-                          tile(image, i + 1, { gridColumn: "2 / 3", gridRow: `${i + 1} / span 1` })
-                        )}
-                      </div>
+                      <FeatureLeftGallery
+                        images={g}
+                        title={project.title}
+                        onImageClick={() => handleProjectClick(project)}
+                      />
                     );
                   })()}
                 </div>
@@ -551,18 +635,10 @@ export const Projects = () => {
       </div>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-4xl">
-          <DialogHeader>
-            <Badge className="w-fit mb-2 bg-accent text-accent-foreground rounded-none font-semibold">
-              {selectedProject?.category}
-            </Badge>
-            <DialogTitle className="text-2xl font-bold text-foreground pr-8">
-              {selectedProject?.title}
-            </DialogTitle>
-            <p className="text-muted-foreground pr-8">{selectedProject?.location}</p>
-          </DialogHeader>
+        <DialogContent className="w-full max-w-[1400px] px-4 py-2 sm:py-4">
+          <DialogTitle className="sr-only">{selectedProject?.title}</DialogTitle>
 
-          <Carousel className="w-full mt-2">
+          <Carousel className="w-full">
             <CarouselContent className="items-center">
               {selectedProject?.gallery.map((image, index) => (
                 <CarouselItem key={index}>
@@ -571,7 +647,7 @@ export const Projects = () => {
                       src={image}
                       alt={`${selectedProject.title} - ${index + 1}`}
                       loading="lazy"
-                      className="max-h-[70vh] w-auto max-w-full object-contain"
+                      className="max-h-[90vh] w-auto max-w-full object-contain"
                     />
                   </div>
                 </CarouselItem>
@@ -584,31 +660,6 @@ export const Projects = () => {
               </>
             )}
           </Carousel>
-
-          <div className="grid gap-4 mt-4 sm:grid-cols-2">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-accent">Cliente</span>
-              <p className="text-sm text-foreground">{selectedProject?.client}</p>
-            </div>
-            {selectedProject?.architecture && (
-              <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-accent">Arquitetura</span>
-                <p className="text-sm text-foreground">{selectedProject.architecture}</p>
-              </div>
-            )}
-            {selectedProject?.metricLabel && (
-              <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-accent">
-                  {selectedProject.metricLabel}
-                </span>
-                <p className="text-sm text-foreground">{selectedProject.metricValue}</p>
-              </div>
-            )}
-            <div className="sm:col-span-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-accent">Escopo</span>
-              <p className="text-sm text-foreground leading-relaxed">{selectedProject?.scope}</p>
-            </div>
-          </div>
         </DialogContent>
       </Dialog>
 

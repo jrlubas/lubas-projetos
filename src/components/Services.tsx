@@ -72,7 +72,7 @@ export const Services = () => {
               className="group relative bg-card p-8 transition-colors hover:bg-primary"
             >
               <div className="flex gap-4">
-                <div className="flex flex-col items-start flex-shrink-0">
+                <div className="flex flex-col items-center flex-shrink-0">
                   <span className="text-2xl font-bold text-accent/50 group-hover:text-accent/70 transition-colors">
                     {service.number}
                   </span>

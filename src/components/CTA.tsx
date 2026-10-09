@@ -21,7 +21,7 @@ export const CTA = () => {
             Vamos conversar sobre seu projeto?
           </h2>
           <p className="mb-10 text-lg text-primary-foreground/85">
-            Concepção, cálculo e consultoria técnica em estruturas, fundações e geotecnia.
+            Concepção, cálculo e consultoria técnica em engenharia
           </p>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">

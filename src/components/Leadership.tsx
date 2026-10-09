@@ -4,7 +4,7 @@ const ASSOCIATES = [
   "Eng. Everton Barbosa Batista",
   "Eng. Násser Salomão",
   "Eng. Wesley Gustavo",
-  "Eng. Matheus Barbosa",
+  "Tec. Matheus Barbosa",
 ];
 
 const PARTNERS = [

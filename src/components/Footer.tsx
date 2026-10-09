@@ -72,8 +72,8 @@ export const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0 text-accent" />
-                <a href="tel:+556799999999" className="hover:text-accent transition-colors">
-                  Campo Grande/MS: +55 67 9999-9999
+                <a href="tel:+556733018391" className="hover:text-accent transition-colors">
+                  Campo Grande/MS: +55 67 3301-8391
                 </a>
               </li>
               <li className="flex items-center gap-2">

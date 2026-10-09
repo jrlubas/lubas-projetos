@@ -82,9 +82,9 @@ export const Header = () => {
                 <Phone className="w-4 h-4 text-accent" />
                 São Paulo/SP: (11) 2036-8992
               </a>
-              <a href="tel:+556799999999" className="flex items-center gap-2 hover:text-accent">
+              <a href="tel:+556733018391" className="flex items-center gap-2 hover:text-accent">
                 <Phone className="w-4 h-4 text-accent" />
-                Campo Grande/MS: (67) 9999-9999
+                Campo Grande/MS: (67) 3301-8391
               </a>
             </div>
             <Button

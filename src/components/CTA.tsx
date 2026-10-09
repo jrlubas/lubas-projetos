@@ -52,9 +52,9 @@ export const CTA = () => {
               className="gap-2 bg-transparent border-primary-foreground/60 text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-none font-semibold"
               asChild
             >
-              <a href="tel:+556799999999">
+              <a href="tel:+556733018391">
                 <Phone className="w-5 h-5" />
-                Campo Grande/MS: (67) 9999-9999
+                Campo Grande/MS: (67) 3301-8391
               </a>
             </Button>
           </div>

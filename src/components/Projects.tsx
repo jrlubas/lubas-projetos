@@ -361,7 +361,7 @@ const FeatureLeftGallery = ({
 }: {
   images: string[];
   title: string;
-  onImageClick: () => void;
+  onImageClick: (index: number) => void;
 }) => {
   const [leftRatio, setLeftRatio] = useState<number | null>(null);
   const [rightHeight, setRightHeight] = useState<number | null>(null);
@@ -389,7 +389,7 @@ const FeatureLeftGallery = ({
           src={images[0]}
           alt={`${title} 1`}
           loading="lazy"
-          onClick={onImageClick}
+          onClick={() => onImageClick(0)}
           onLoad={(e) => {
             const t = e.currentTarget;
             setLeftRatio(t.naturalWidth / t.naturalHeight);
@@ -404,7 +404,7 @@ const FeatureLeftGallery = ({
               src={image}
               alt={`${title} ${i + 2}`}
               loading="lazy"
-              onClick={onImageClick}
+              onClick={() => onImageClick(i + 1)}
               className="block w-full h-auto cursor-pointer transition-transform duration-500 hover:scale-105"
             />
           </div>
@@ -417,6 +417,7 @@ const FeatureLeftGallery = ({
 export const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isListOpen, setIsListOpen] = useState(false);
 
@@ -424,8 +425,9 @@ export const Projects = () => {
     ? PROJECTS.filter((p) => p.category === activeCategory)
     : PROJECTS;
 
-  const handleProjectClick = (project: Project) => {
+  const handleProjectClick = (project: Project, imageIndex = 0) => {
     setSelectedProject(project);
+    setSelectedImageIndex(imageIndex);
     setIsOpen(true);
   };
 
@@ -540,7 +542,7 @@ export const Projects = () => {
                           src={image}
                           alt={`${project.title} ${i + 1}`}
                           loading="lazy"
-                          onClick={() => handleProjectClick(project)}
+                          onClick={() => handleProjectClick(project, i)}
                           className="block w-full h-auto cursor-pointer transition-transform duration-500 hover:scale-105"
                         />
                       </div>
@@ -623,7 +625,7 @@ export const Projects = () => {
                       <FeatureLeftGallery
                         images={g}
                         title={project.title}
-                        onImageClick={() => handleProjectClick(project)}
+                        onImageClick={(index) => handleProjectClick(project, index)}
                       />
                     );
                   })()}
@@ -638,7 +640,7 @@ export const Projects = () => {
         <DialogContent className="w-full max-w-[1400px] px-4 py-2 sm:py-4">
           <DialogTitle className="sr-only">{selectedProject?.title}</DialogTitle>
 
-          <Carousel className="w-full">
+          <Carousel className="w-full" opts={{ startIndex: selectedImageIndex }}>
             <CarouselContent className="items-center">
               {selectedProject?.gallery.map((image, index) => (
                 <CarouselItem key={index}>

@@ -30,9 +30,9 @@ export const CTA = () => {
               className="gap-2 bg-accent text-accent-foreground hover:bg-accent/90 rounded-none font-semibold"
               asChild
             >
-              <a href="mailto:engenharia@lubasprojetos.com.br">
+              <a href="mailto:contato@lubasprojetos.com.br">
                 <Mail className="w-5 h-5" />
-                engenharia@lubasprojetos.com.br
+                contato@lubasprojetos.com.br
               </a>
             </Button>
             <Button

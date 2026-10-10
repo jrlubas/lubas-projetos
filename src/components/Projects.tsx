@@ -451,7 +451,7 @@ export const Projects = () => {
             </button>
           </div>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Mais de 200 obras e serviços, de estações de metrô a pontes, edificações, galpões e pisos industriais, cinemas e verificação técnica independente.
+            Obras e serviços, de estações de metrô a pontes, edificações, galpões e pisos industriais, cinemas e verificação técnica independente.
           </p>
         </div>
 

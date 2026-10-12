@@ -210,7 +210,7 @@ const PROJECTS: Project[] = [
     title: "Paço Municipal de Bataguassu",
     location: "Bataguassu/MS · 2019",
     client: "Prefeitura Municipal de Bataguassu",
-    architecture: "Fernandes Arquitetos Associados",
+    architecture: "Onodera Arquitetos Associados",
     metricLabel: "ÁREA",
     metricValue: "7.500 m²",
     scope: "Coordenação, estruturas, fundações e instalações elétricas, hidráulicas, fotovoltaicas e de lógica",

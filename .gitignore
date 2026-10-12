@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Assinaturas de e-mail (uso interno, nao faz parte do site)
+assinaturas-email/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

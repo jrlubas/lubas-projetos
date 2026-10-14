@@ -13,7 +13,7 @@ dist-ssr
 *.local
 
 # Assinaturas de e-mail (uso interno, nao faz parte do site)
-assinaturas-email/
+/assinaturas-email/
 
 # Editor directories and files
 .vscode/*

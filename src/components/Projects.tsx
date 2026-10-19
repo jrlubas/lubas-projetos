@@ -58,6 +58,12 @@ import ragueb4 from "@/assets/projects/ragueb-chohfi-4.jpg";
 import laudos1 from "@/assets/projects/laudos-1.jpg";
 import laudos2 from "@/assets/projects/laudos-2.jpg";
 import laudos3 from "@/assets/projects/laudos-3.jpg";
+import monotrilho1 from "@/assets/projects/monotrilho-15prata-1.jpg";
+import monotrilho2 from "@/assets/projects/monotrilho-15prata-2.jpg";
+import monotrilho3 from "@/assets/projects/monotrilho-15prata-3.jpg";
+import oscarFreire1 from "@/assets/projects/oscar-freire-1.jpg";
+import edificioOthon1 from "@/assets/projects/edificio-othon-1.jpg";
+import cinemarkVilaVelha1 from "@/assets/projects/cinemark-vila-velha-1.jpg";
 
 const CATEGORIES = [
   "Mobilidade sobre trilhos",
@@ -315,6 +321,21 @@ const PROJECTS: Project[] = [
     galleryLayout: "feature-top3",
   },
   {
+    id: "monotrilho-15prata",
+    category: "Avaliação Técnica de Projetos",
+    title: "Monotrilho da Linha 15-Prata",
+    location: "Metrô-SP · São Paulo/SP · 2013–2023",
+    description:
+      "Verificação independente dos projetos executivos da via elevada do monotrilho: vigas protendidas, pilares, fundações e remanejamentos de galerias, desde 2013.",
+    client: "Consórcios EBEI / Intertechne, CEML, CEBE e BRA Engenharia / Metrô-SP",
+    metricLabel: "VIA ELEVADA VERIFICADA",
+    metricValue: "14 km",
+    scope: "Vigas protendidas, pilares, fundações e remanejamentos de galerias: desenhos e memórias de cálculo",
+    cover: monotrilho1,
+    gallery: [monotrilho1, monotrilho2, monotrilho3],
+    galleryLayout: "feature-top2",
+  },
+  {
     id: "arsenal-de-guerra",
     category: "Laudos e vistorias",
     title: "Arsenal de Guerra",
@@ -343,6 +364,36 @@ const PROJECTS: Project[] = [
     scope: "Laudo de avaliação e projeto de restauração e reforço",
     cover: laudos3,
     gallery: [laudos3],
+  },
+  {
+    id: "oscar-freire",
+    category: "Laudos e vistorias",
+    title: "Estação Oscar Freire",
+    location: "Mezanino · São Paulo/SP · 2017",
+    client: "EBEI Engenharia / Metrô-SP",
+    scope: "Laudo dos tirantes da estrutura metálica do mezanino, apoiados na parede do túnel",
+    cover: oscarFreire1,
+    gallery: [oscarFreire1],
+  },
+  {
+    id: "edificio-othon",
+    category: "Laudos e vistorias",
+    title: "Edifício Othon",
+    location: "Belo Horizonte/MG · 2016",
+    client: "Makhohl Arquitetura",
+    scope: "Projeto das estruturas metálicas da restauração do edifício",
+    cover: edificioOthon1,
+    gallery: [edificioOthon1],
+  },
+  {
+    id: "cinemark-vila-velha",
+    category: "Laudos e vistorias",
+    title: "Cinemark Vila Velha",
+    location: "Vila Velha/ES · 2015",
+    client: "Cinemark Brasil",
+    scope: "Laudo da estrutura executada das arquibancadas",
+    cover: cinemarkVilaVelha1,
+    gallery: [cinemarkVilaVelha1],
   },
 ];
 

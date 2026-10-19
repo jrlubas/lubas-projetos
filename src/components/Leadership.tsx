@@ -11,19 +11,17 @@ const PARTNERS = [
   {
     name: "Paulo Henrique Lubas",
     role: "Sócio-diretor · CREA-SP 5063195733",
+    experience: "+19 anos",
     bio: [
-      "Mestre em Engenharia de Estruturas pela Escola Politécnica da USP (2012). Engenheiro civil pela UFMS (2006).",
-      "Pesquisa em pilares mistos de aço e concreto, com software próprio em C# conforme ABNT NBR 8800, AISC e Eurocode 4.",
-      "Membro do comitê da ABNT NBR 7187 (pontes, viadutos e passarelas de concreto) desde 2018 e do comitê da ABNT NBR 15200 de 2010 a 2012.",
+      "Mestre em Engenharia de Estruturas pela Escola Politécnica da USP (2012) e engenheiro civil pela UFMS (2006). Membro do comitê da ABNT NBR 7187 (pontes e viadutos de concreto) desde 2018.",
     ],
   },
   {
     name: "Edson Lubas",
     role: "Sócio-diretor · CREA-SP 5062996694",
+    experience: "+23 anos",
     bio: [
-      "Mestre em Engenharia de Estruturas, na área de estruturas metálicas, pela Escola Politécnica da USP (2006). Engenheiro civil pela UFMS (2001).",
-      "Coautor de dois volumes do Manual de Construção em Aço (CBCA) sobre perfis formados a frio, e autor do programa DimPerfil, disponibilizado pelo CBCA.",
-      "Professor convidado do PECE-USP de 2003 a 2006 e professor da FESP e da UNIP de 2008 a 2013.",
+      "Mestre em Engenharia de Estruturas pela Escola Politécnica da USP (2006) e engenheiro civil pela UFMS (2001). Coautor de dois volumes do Manual de Construção em Aço (CBCA), autor do programa DimPerfil e professor convidado da USP (PECE, 2003–2006).",
     ],
   },
 ];
@@ -56,6 +54,10 @@ export const Leadership = () => {
                   <h3 className="text-xl font-semibold text-primary-foreground">{partner.name}</h3>
                   <p className="text-sm text-accent font-medium">{partner.role}</p>
                 </div>
+              </div>
+              <div className="mb-5">
+                <span className="text-2xl font-bold text-primary-foreground">{partner.experience}</span>
+                <span className="ml-2 text-sm text-primary-foreground/75">de experiência em projetos</span>
               </div>
               <div className="space-y-3">
                 {partner.bio.map((paragraph, index) => (

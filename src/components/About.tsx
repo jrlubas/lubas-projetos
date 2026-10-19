@@ -13,17 +13,13 @@ export const About = () => {
               Projetos de engenharia, verificação e consultoria
             </h2>
             <p className="mb-5 text-muted-foreground leading-relaxed">
-              Fundada em 2013, com sede em São Paulo/SP e filial em Campo Grande/MS, a Lubas Projetos e Consultoria em Engenharia elabora e verifica projetos de obras de arte especiais e correntes, edificações e estações de metrô e estações de trens metropolitanos.
+              A empresa é liderada pelos sócios Paulo Lubas e Edson Lubas , ambos mestres em engenharia pela Escola Politécnica da USP, com mais de 40 anos de experiência somada em projetos.
             </p>
             <p className="mb-5 text-muted-foreground leading-relaxed">
-              Atuamos em estruturas de concreto armado, protendido e pré-moldado, estruturas metálicas e alvenaria estrutural, madeira, fundações, contenções e obras de terra — com projetos desenvolvidos em BIM e coordenação de equipes multidisciplinares.
+              Fundada em 2013, com os seus sócios já tento larga experiência em projetos, com sede em São Paulo/SP e filial em Campo Grande/MS, a Lubas Projetos e Consultoria em Engenharia elabora e verifica projetos de obras de arte especiais e correntes, edificações e estações de metrô e estações de trens metropolitanos.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              A empresa é liderada pelos sócios{" "}
-              <a href="#lideranca" className="font-semibold text-primary hover:text-accent transition-colors">
-                Paulo Lubas e Edson Lubas
-              </a>
-              , ambos mestres em engenharia de estruturas pela Escola Politécnica da USP.
+              Atuamos em estruturas de concreto armado, protendido e pré-moldado, estruturas metálicas e alvenaria estrutural, madeira, fundações, contenções e obras de terra — com projetos desenvolvidos em BIM e coordenação de equipes multidisciplinares.
             </p>
           </div>
 

@@ -115,6 +115,7 @@ export const PROJECTS_LIST: ProjectListSection[] = [
   {
     title: "Avaliação Técnica de Projetos",
     items: [
+      { year: "2013–2023", name: "Monotrilho da Linha 15-Prata", meta: "Consórcios EBEI / Intertechne, CEML, CEBE e BRA Engenharia / Metrô-SP · Verificação independente dos projetos executivos da via elevada (14 km): vigas protendidas, pilares, fundações e remanejamentos de galerias" },
       { year: "2026", name: "OAE Novo Jaboticabal – BRT ABC", meta: "Sondotécnica · São Bernardo do Campo/SP: verificação do projeto executivo estrutural" },
       { year: "2026", name: "Elevado Tamanduateí – BRT ABC, São Paulo/SP", meta: "Sondotécnica · Verificação do projeto executivo estrutural do elevado" },
       { year: "2025", name: "Pontilhão Jaboticabal – BRT ABC", meta: "Sondotécnica · Infra, meso e superestrutura: vigas protendidas, pré-lajes e lajes (3 tabuleiros)" },
@@ -146,7 +147,10 @@ export const PROJECTS_LIST: ProjectListSection[] = [
   {
     title: "Laudos, reforços e retrofit",
     items: [
+      { year: "2017", name: "Estação Oscar Freire – Mezanino", meta: "EBEI Engenharia / Metrô-SP · Laudo dos tirantes da estrutura metálica do mezanino, apoiados na parede do túnel" },
       { year: "2017", name: "Shopping Center Paulista", meta: "Shopping Center Paulista · Laudo das condições de segurança das coberturas e claraboias" },
+      { year: "2016", name: "Edifício Othon – Belo Horizonte/MG", meta: "Makhohl Arquitetura · Projeto das estruturas metálicas da restauração do edifício" },
+      { year: "2015", name: "Cinemark Vila Velha/ES", meta: "Cinemark Brasil · Laudo da estrutura executada das arquibancadas" },
       { year: "2015", name: "Dolfins do Píer de Grãos – Porto de Vila do Conde/PA", meta: "LPC Latina / Hidrovias · Laudo de avaliação e projeto de restauração e reforço" },
     ],
   },

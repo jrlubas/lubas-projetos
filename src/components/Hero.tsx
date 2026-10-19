@@ -3,10 +3,10 @@ import { ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-banner.jpg";
 
 const STATS = [
-  { value: "2013", label: "Ano de fundação" },
-  { value: "10 mil", label: "Folhas verificadas" },
-  { value: "14 km", label: "Vigas protendidas verificadas" },
-  { value: "200", label: "Mais de duzentos projetos realizados" },
+  { value: "+200", label: "projetos desenvolvidos" },
+  { value: "10", label: "estados do Brasil" },
+  { value: "10 mil", label: "folhas de projeto verificadas" },
+  { value: "14 km", label: "de vigas protendidas verificadas" },
 ];
 
 export const Hero = () => {
